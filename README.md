@@ -16,6 +16,21 @@ This project showcases:
 
 ---
 
+# 🎯 Learning Objectives
+
+This project was created to practice and understand:
+
+- Docker containerization
+- Docker Compose orchestration
+- Multi-container networking
+- Redis integration with FastAPI
+- Persistent storage using Docker volumes
+- Environment-based configuration
+- Health checks and retry logic
+- Docker layer caching and optimization
+
+---
+
 # 📌 Architecture
 
 ```text
@@ -27,6 +42,7 @@ Browser / API Client
           ↓
       Docker Volume
 ```
+
 
 ---
 
