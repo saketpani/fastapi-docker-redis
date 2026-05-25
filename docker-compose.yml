@@ -1,9 +1,8 @@
-version: '3.9'
-
 services:
 
   api:
     build: .
+
     container_name: fastapi_app
 
     ports:
@@ -38,3 +37,5 @@ services:
       timeout: 5s
       retries: 5
 
+volumes:
+  redis-data:

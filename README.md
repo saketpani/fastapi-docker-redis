@@ -339,6 +339,17 @@ With a volume:
 * Nginx reverse proxy
 
 ---
+# Screenshots
+
+![Docker Compose Run](screenshots/docker-compose-run.jpg)
+
+![FastAPI Swagger Docs](screenshots/fast-api-swagger-docs.jpg)
+
+![API Response](screenshots/get-api.jpg)
+
+![Health Endpoint](screenshots/health-endpoint.jpg)
+
+---
 
 # 📚 References
 
