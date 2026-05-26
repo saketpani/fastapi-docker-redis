@@ -2,40 +2,34 @@ services:
 
   api:
     build: .
-
     container_name: fastapi_app
-
     ports:
       - "8000:8000"
-
     environment:
       REDIS_HOST: ${REDIS_HOST}
       REDIS_PORT: ${REDIS_PORT}
       RETRY_COUNT: ${RETRY_COUNT}
-
+    # Enforce an explicit dependency rule based on backend health status
     depends_on:
-      - redis
-
+      redis:
+        condition: service_healthy
     restart: unless-stopped
 
   redis:
     image: redis:7-alpine
-
     container_name: redis_server
-
     ports:
       - "6379:6379"
-
     volumes:
       - redis-data:/data
-
     restart: unless-stopped
-
+    # The native engine health check layer
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+      interval: 5s       # Check every 5 seconds during bootstrap initialization
+      timeout: 3s        # Max time allowed for the ping response
+      retries: 5         # Fail status marked if 5 consecutive checks fail
+      start_period: 2s   # Grace period for the engine to initialize before running checks
 
 volumes:
   redis-data:
